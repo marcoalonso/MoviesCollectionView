@@ -10,7 +10,12 @@ import Kingfisher
 
 class DetailViewController: UIViewController {
     
+    
     @IBOutlet weak var posterPathMovie: UIImageView!
+    
+    @IBOutlet weak var descripcionMovie: UITextView!
+    
+    
     var movieToShow: Results?
     var manager = ManagerMovies()
     var idTrailer: String?
@@ -28,6 +33,8 @@ class DetailViewController: UIViewController {
     func setupUI(){
         guard let urlPoster = URL(string: "\(Constants.urlImages)/\(movieToShow!.poster_path)") else { return }
         posterPathMovie.kf.setImage(with: urlPoster)
+        print("Debug: descripcion: \(movieToShow?.overview)")
+        descripcionMovie.text = movieToShow?.overview
         
     }
     
@@ -35,7 +42,7 @@ class DetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "VideoTrailerViewController") as! VideoTrailerViewController
         vc.trailer = idTrailer
-        present(vc, animated: true)
+        self.present(vc, animated: true)
     }
 }
 

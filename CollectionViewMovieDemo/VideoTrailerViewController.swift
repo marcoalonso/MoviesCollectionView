@@ -16,6 +16,7 @@ class VideoTrailerViewController: UIViewController, YTPlayerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         videoTrailerView.delegate = self
         
         print("Debug: trailer \(trailer!)")
